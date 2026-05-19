@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="IDLM: Inverse-distilled Diffusion Language Models project page">
+  <meta name="keywords" content="IDLM, inverse distillation, diffusion language models, discrete diffusion, language models">
+  <meta property="og:title" content="IDLM: Inverse-distilled Diffusion Language Models">
+  <meta property="og:description" content="A project page for IDLM, a post-training framework for accelerating Diffusion Language Models.">
+  <meta property="og:image" content="assets/idlm-teaser.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IDLM: Inverse-distilled Diffusion Language Models">
+  <meta name="twitter:description" content="Few-step generation for Diffusion Language Models via inverse distillation.">
+  <meta name="twitter:image" content="assets/idlm-teaser.png">
+  <title>IDLM: Inverse-distilled Diffusion Language Models</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="venue">ICML 2026</p>
+        <h1>IDLM: Inverse-distilled Diffusion Language Models</h1>
+        <div class="authors" aria-label="Authors">
+          <span><a href="https://arxiv.org/search/cs?searchtype=author&query=Li,+D" target="_blank" rel="noreferrer">David Li</a><sup>*1</sup></span>
+          <span><a href="https://arxiv.org/search/cs?searchtype=author&query=Gushchin,+N" target="_blank" rel="noreferrer">Nikita Gushchin</a><sup>*2,3</sup></span>
+          <span><a href="https://arxiv.org/search/cs?searchtype=author&query=Abulkhanov,+D" target="_blank" rel="noreferrer">Dmitry Abulkhanov</a></span>
+          <span><a href="https://arxiv.org/search/cs?searchtype=author&query=Moulines,+E" target="_blank" rel="noreferrer">Eric Moulines</a><sup>1,4</sup></span>
+          <span><a href="https://arxiv.org/search/cs?searchtype=author&query=Oseledets,+I" target="_blank" rel="noreferrer">Ivan Oseledets</a><sup>3,2</sup></span>
+          <span><a href="https://arxiv.org/search/cs?searchtype=author&query=Panov,+M" target="_blank" rel="noreferrer">Maxim Panov</a><sup>1</sup></span>
+          <span><a href="https://arxiv.org/search/cs?searchtype=author&query=Korotin,+A" target="_blank" rel="noreferrer">Alexander Korotin</a><sup>2,3</sup></span>
+        </div>
+        <div class="affiliations">
+          <span><sup>1</sup>Mohamed Bin Zayed University of AI</span>
+          <span><sup>2</sup>Applied AI Institute</span>
+          <span><sup>3</sup>AXXX</span>
+          <span><sup>4</sup>EPITA</span>
+          <span><sup>*</sup>Equal contribution</span>
+        </div>
+        <nav class="paper-links" aria-label="Paper links">
+          <a class="shield-link" href="https://arxiv.org/abs/2602.19066" target="_blank" rel="noreferrer">
+            <img src="https://img.shields.io/badge/arXiv-2602.19066-b31b1b.svg" alt="arXiv">
+          </a>
+          <a class="shield-link" href="https://huggingface.co/kekchpek/models" target="_blank" rel="noreferrer">
+            <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-ffcc4d.svg" alt="Hugging Face Models">
+          </a>
+          <a class="shield-link" href="https://www.youtube.com/watch?v=RZ6_huata1Y&amp;feature=youtu.be" target="_blank" rel="noreferrer">
+            <img src="https://img.shields.io/badge/YouTube-Recording-red?logo=youtube&amp;logoColor=white" alt="YouTube Recording">
+          </a>
+        </nav>
+        <p class="tagline">
+          IDLM distills pretrained Diffusion Language Models into few-step generators,
+          reducing inference steps by <strong>4x-64x</strong> while preserving generation quality.
+        </p>
+      </div>
+    </section>
+
+    <section class="teaser">
+      <div class="container">
+        <figure>
+          <img src="assets/idlm-teaser.png" alt="Overview diagram comparing standard Diffusion Language Models with Inverse-distilled Diffusion Language Models.">
+          <figcaption>
+            Standard DLMs produce high-quality samples but require many inference steps. IDLM trains a distilled generator that keeps the teacher behavior while moving to fast inference.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section light">
+      <div class="container narrow">
+        <h2>Key Innovations</h2>
+        <ol class="innovation-list">
+          <li>
+            <strong>Inverse distillation for tokens.</strong>
+            IDLM adapts inverse distillation from continuous diffusion models to discrete language generation.
+          </li>
+          <li>
+            <strong>A valid optimization target.</strong>
+            The method addresses non-uniqueness in the inverse objective by establishing a uniqueness guarantee for the discrete setting.
+          </li>
+          <li>
+            <strong>Stable training relaxations.</strong>
+            Gradient-stable relaxations make backpropagation through discrete token spaces practical.
+          </li>
+          <li>
+            <strong>Fast few-step sampling.</strong>
+            Experiments across multiple DLM teachers report a 4x-64x reduction in inference steps while maintaining entropy and generative perplexity.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <h2>Abstract</h2>
+        <p>
+          Diffusion Language Models have become a promising route for text generation, but their iterative sampling process can make inference slow. IDLM extends inverse distillation to this discrete setting, using a pretrained DLM as the teacher and training a student generator for substantially fewer sampling steps.
+        </p>
+        <p>
+          The paper tackles the theoretical issue of non-unique inverse objectives and the practical difficulty of unstable discrete-space gradients. Its solution combines a uniqueness result with differentiable training relaxations, yielding a post-training framework that accelerates DLM inference while preserving core quality metrics.
+        </p>
+      </div>
+    </section>
+
+    <section class="section light generation-section">
+      <div class="container">
+        <h2>Text Generation: DLM vs. IDLM</h2>
+        <figure class="generation-figure">
+          <img src="assets/idlm-generation.gif" alt="Animated comparison where a diffusion language model and IDLM perform the same generation task, but IDLM completes it in far fewer model calls.">
+          <figcaption>
+            The DLM side uses 64 sampling steps, while the IDLM side reaches completed text after only 4 distilled model calls.
+          </figcaption>
+        </figure>
+        <p class="speed-callout">
+          IDLM keeps the discrete diffusion teacher's quality target, but compresses sampling into a few-step generator for substantially faster inference.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+      <div class="container narrow">
+        <div class="bib-header">
+          <h2>BibTeX</h2>
+          <button class="copy-button" type="button" data-copy-target="bibtex-code">Copy</button>
+        </div>
+        <pre><code id="bibtex-code">@article{li2026idlm,
+  title={IDLM: Inverse-distilled Diffusion Language Models},
+  author={Li, David and Gushchin, Nikita and Abulkhanov, Dmitry and Moulines, Eric and Oseledets, Ivan and Panov, Maxim and Korotin, Alexander},
+  journal={arXiv preprint arXiv:2602.19066},
+  year={2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container narrow">
+      <p>
+        Page style inspired by the Academic Project Page Template and the DUO project page. Content links point to the IDLM arXiv record.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
