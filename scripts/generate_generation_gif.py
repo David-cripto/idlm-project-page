@@ -153,23 +153,6 @@ def draw_strip(draw, title, y, calls, total, color, tracker):
         draw_status(draw, y + 360, calls, total, color, "DONE: final output", "long reverse denoising chain", tracker)
 
 
-def draw_callout(draw, frame, tracker):
-    idlm_done = IDLM_CALLS[frame] == IDLM_TOTAL_CALLS
-    dlm_done = DLM_CALLS[frame] == DLM_TOTAL_CALLS
-    if idlm_done and not dlm_done:
-        text = "IDLM has already completed while the DLM is still sampling"
-        color = GREEN
-    else:
-        text = "Same generation task; only the number of sampling calls changes"
-        color = TEXT
-
-    box = (410, 810, 1510, 870)
-    rounded(draw, box, 30, "#f8fafc", "#d8dfe8", 2)
-    bbox = draw.textbbox((0, 0), text, font=CALLOUT)
-    x = (WIDTH - (bbox[2] - bbox[0])) / 2
-    draw_text(draw, (x, 827), text, color, CALLOUT, tracker, box, "callout")
-
-
 def draw_frame(frame):
     image = Image.new("RGB", (WIDTH, HEIGHT), BG)
     draw = ImageDraw.Draw(image)
@@ -178,7 +161,6 @@ def draw_frame(frame):
     draw_strip(draw, "Diffusion Language Model", 15, DLM_CALLS[frame], DLM_TOTAL_CALLS, RED, tracker)
     draw.line((50, 425, WIDTH - 50, 425), fill="#d8d8d8", width=2)
     draw_strip(draw, "IDLM", 435, IDLM_CALLS[frame], IDLM_TOTAL_CALLS, GREEN, tracker)
-    draw_callout(draw, frame, tracker)
     return image, tracker
 
 
